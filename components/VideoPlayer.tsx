@@ -8,7 +8,7 @@ const VideoPlayer = ({ data }: any) => {
   return (
     <Box border="1px solid">
       <ReactPlayer
-        url={files[2]?.link}
+        url={files.length ? files[2]?.link : ""}
         controls={true}
         width="100%"
         height="100%"
