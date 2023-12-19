@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 
 // static data
-import { trainings } from './data';
+import { trainings } from "./data";
 
 const MostVisited = () => {
   const theme = useTheme();
@@ -31,7 +31,6 @@ const MostVisited = () => {
   }
   // for demo
 
- 
   //static data end
   return (
     <>
@@ -47,7 +46,7 @@ const MostVisited = () => {
         {trainings.map((item: any, i: number) => {
           return (
             <GridItem key={i}>
-              <CourseUserItem item={item} />
+              {/* <CourseUserItem course={item} /> */}
             </GridItem>
           );
         })}
