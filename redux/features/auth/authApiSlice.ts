@@ -33,6 +33,7 @@ const AuthApi = apiSlice.injectEndpoints({
           // store the credentials in localStorage
           localStorage.setItem("_token", JSON.stringify(result.data.token));
         } catch (error) {
+          localStorage.removeItem("_token");
           console.log(error);
         }
       },
@@ -71,6 +72,7 @@ const AuthApi = apiSlice.injectEndpoints({
           // clear the localStorage
           localStorage.removeItem("_token");
         } catch (error) {
+          localStorage.removeItem("_token");
           console.log(error);
         }
       },
