@@ -1,0 +1,104 @@
+"use client";
+
+import CollapsedMenu from "@/components/layout/CollapsedMenu";
+import Dot from "@/components/Dot";
+import SearchMenu from "@/components/SearchMenu";
+import SideMenu from "@/components/layout/SideMenu";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Container,
+  Flex,
+  Grid,
+  GridItem,
+  Text,
+} from "@chakra-ui/react";
+import Footer from "@/components/layout/Footer";
+
+interface UserPageLayoutProps {
+  children: React.ReactNode;
+}
+
+const UserPageLayout: React.FC<UserPageLayoutProps> = ({ children }) => {
+  return (
+    <>
+      <SearchMenu />
+      <Container
+        maxW={{
+          base: "container.sm",
+          md: "container.md",
+          lg: "container.lg",
+          xl: "container.xl",
+        }}
+      >
+        <Grid
+          templateColumns="repeat(10, 1fr)"
+          gap={18}
+          justifyItems={{ base: "center", sm: "stretch" }}
+        >
+          <GridItem colSpan={{ base: 10 }}>
+            <Flex direction="column" alignItems="center">
+              <Breadcrumb
+                separator=">"
+                mb={6}
+                fontFamily="Open Sans"
+                fontWeight="400"
+                fontSize="xs"
+                color="theme.grey-500"
+                spacing={5}
+              >
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#">Docs</BreadcrumbLink>
+                </BreadcrumbItem>
+
+                <BreadcrumbItem isCurrentPage>
+                  <BreadcrumbLink
+                    href="#"
+                    fontWeight="500"
+                    color="theme.purple"
+                  >
+                    Breadcrumb
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+              </Breadcrumb>
+              <Text as="h4" mb={1} color="theme.purple">
+                Lecture 3 : A Correct Sentence
+              </Text>
+              <Flex
+                alignItems="center"
+                gap={["8px", 2]}
+                color="#8A8894"
+                mb={3}
+                fontSize={["sm", "md"]}
+              >
+                <Text className="b5">3 Total Hours</Text>
+                <Dot />
+                <Text className="b5">7 Lectures</Text>
+                <Dot />
+                <Text className="b5">Beginner</Text>
+              </Flex>
+            </Flex>
+          </GridItem>
+          {/* side menu */}
+          <GridItem colSpan={{ base: 10, lg: 1 }}>
+            <CollapsedMenu>
+              <SideMenu />
+            </CollapsedMenu>
+          </GridItem>
+          {/* side menu end */}
+          {/* main */}
+          <GridItem colSpan={10}>{children}</GridItem>
+          {/* main end */}
+        </Grid>
+      </Container>
+      <Footer />
+    </>
+  );
+};
+
+export default UserPageLayout;

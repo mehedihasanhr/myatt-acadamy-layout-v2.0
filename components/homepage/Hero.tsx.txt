@@ -1,0 +1,1034 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+"use client";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useRef, useLayoutEffect } from "react";
+
+const Hero = () => {
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const drawImage = (
+    ctx: CanvasRenderingContext2D,
+    image: HTMLImageElement,
+    width: number,
+    height: number,
+    dx: number = 0,
+    dy: number = 0
+  ) => {
+    ctx.drawImage(image, dx, dy, width, height);
+  };
+
+  useLayoutEffect(() => {
+    const canvasContainer = canvasContainerRef.current as HTMLDivElement;
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+    // // canvas size parent container
+    // canvas.height = canvasContainer.clientHeight;
+    // canvas.width = canvasContainer.clientWidth;
+
+    // background image
+    const backgroundImage = new Image();
+    backgroundImage.src = "/hero/bg.png";
+
+    // academy bridge
+    const drawAcademyBridge = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.2,
+        height * 0.35,
+        width * 0,
+        height * 0.7
+      );
+    };
+
+    const academyBridge = new Image();
+    academyBridge.src = "/hero/academy-bridge.png";
+    academyBridge.onload = () => {
+      drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+    };
+
+    // football ground
+    const drawFootballGround = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.27,
+        height * 0.28,
+        width * 0.56,
+        height * 0.6
+      );
+    };
+
+    const footballGround = new Image();
+    footballGround.src = "/hero/football-field-and-3-tree.png";
+    footballGround.onload = () => {
+      drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+    };
+
+    // early-childhood-center-building
+    const drawEarlyChildhoodCenterBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(ctx, image, width * 0.26, height * 0.53, width * 0, height * 0);
+    };
+
+    const earlyChildhoodCenterBuilding = new Image();
+    earlyChildhoodCenterBuilding.src =
+      "/hero/early-childhood-center-building.png";
+    earlyChildhoodCenterBuilding.onload = () => {
+      drawEarlyChildhoodCenterBuilding(
+        ctx,
+        earlyChildhoodCenterBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    // blue house
+    const drawBlueHouse = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.22,
+        height * 0.32,
+        width * 0.3,
+        height * 0.08
+      );
+    };
+
+    const blueHouse = new Image();
+    blueHouse.src = "/hero/blue-house.png";
+    blueHouse.onload = () => {
+      drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+    };
+
+    // sun
+    const drawSun = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.1,
+        height * 0.2,
+        width * 0.44,
+        height * 0.03
+      );
+    };
+
+    const sun = new Image();
+    sun.src = "/hero/sun.png";
+    sun.onload = () => {
+      drawSun(ctx, sun, canvas.width, canvas.height);
+    };
+
+    // middle-school-grades-building
+    const drawMiddleSchoolGradesBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.22,
+        height * 0.25,
+        width * 0.51,
+        height * 0.085
+      );
+    };
+
+    const middleSchoolGradesBuilding = new Image();
+    middleSchoolGradesBuilding.src = "/hero/middle-school-grades.png";
+    middleSchoolGradesBuilding.onload = () => {
+      drawMiddleSchoolGradesBuilding(
+        ctx,
+        middleSchoolGradesBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    // high school building
+    const drawHighSchoolBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.23,
+        height * 0.5,
+        width * 0.77,
+        height * 0
+      );
+    };
+
+    const highSchoolBuilding = new Image();
+    highSchoolBuilding.src = "/hero/high-school.png";
+    highSchoolBuilding.onload = () => {
+      drawHighSchoolBuilding(
+        ctx,
+        highSchoolBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    // coconut tree
+    const drawCoconutTree = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.15,
+        height * 0.25,
+        width * 0.66,
+        height * 0.3
+      );
+    };
+
+    const coconutTree = new Image();
+    coconutTree.src = "/hero/coconut-tree-near-the-staff-room.png";
+    coconutTree.onload = () => {
+      drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+    };
+
+    // cake building
+    const drawCafeBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.25,
+        height * 0.4,
+        width * 0.74,
+        height * 0.45
+      );
+    };
+
+    const cafeBuilding = new Image();
+    cafeBuilding.src = "/hero/cafe-building.png";
+    cafeBuilding.onload = () => {
+      drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+    };
+
+    // reading tree
+    const drawReadingTree = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.2,
+        height * 0.35,
+        width * 0.43,
+        height * 0.4
+      );
+    };
+
+    const readingTree = new Image();
+    readingTree.src = "/hero/reading-tree.png";
+    readingTree.onload = () => {
+      drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+    };
+
+    // resources building
+    const drawResourcesBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.2,
+        height * 0.24,
+        width * 0.25,
+        height * 0.38
+      );
+    };
+
+    const resourcesBuilding = new Image();
+    resourcesBuilding.src = "/hero/resource-center.png";
+    resourcesBuilding.onload = () => {
+      drawResourcesBuilding(
+        ctx,
+        resourcesBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    // spacial project building
+    const drawSpacialProjectBuilding = (
+      ctx: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      width: number,
+      height: number
+    ) => {
+      drawImage(
+        ctx,
+        image,
+        width * 0.19,
+        height * 0.23,
+        width * 0.7,
+        height * 0.7
+      );
+    };
+
+    const spacialProjectBuilding = new Image();
+    spacialProjectBuilding.src = "/hero/special-projects.png";
+    spacialProjectBuilding.onload = () => {
+      drawSpacialProjectBuilding(
+        ctx,
+        spacialProjectBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    // update canvas on resize
+    const updateCanvas = () => {
+      canvas.height = canvasContainer.clientHeight;
+      canvas.width = canvasContainer.clientWidth;
+      drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+      drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+      drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+      drawSpacialProjectBuilding(
+        ctx,
+        spacialProjectBuilding,
+        canvas.width,
+        canvas.height
+      );
+      drawEarlyChildhoodCenterBuilding(
+        ctx,
+        earlyChildhoodCenterBuilding,
+        canvas.width,
+        canvas.height
+      );
+      drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+      drawSun(ctx, sun, canvas.width, canvas.height);
+      drawMiddleSchoolGradesBuilding(
+        ctx,
+        middleSchoolGradesBuilding,
+        canvas.width,
+        canvas.height
+      );
+      drawHighSchoolBuilding(
+        ctx,
+        highSchoolBuilding,
+        canvas.width,
+        canvas.height
+      );
+      drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+      drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+      drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+      drawResourcesBuilding(
+        ctx,
+        resourcesBuilding,
+        canvas.width,
+        canvas.height
+      );
+    };
+
+    backgroundImage.onload = () => {
+      drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+      updateCanvas();
+    };
+
+    canvas.addEventListener("mousemove", (e) => {
+      const x = e.clientX - canvas.offsetLeft;
+      const y = e.clientY - canvas.offsetTop;
+      const scale = canvas.width / canvas.offsetWidth;
+      const zoom = 30;
+
+      if (
+        x > canvas.width * 0 &&
+        x < canvas.width * 0.2 &&
+        y > canvas.height * 0.7 &&
+        y < canvas.height * 1
+      ) {
+        const width = canvas.width * 0.2 + scale * zoom;
+        const height = canvas.height * 0.35 + scale * zoom;
+        const dx = canvas.width * 0 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.7 - scale * zoom * 0.5;
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(academyBridge, dx, dy, width, height);
+      } else if (
+        // spacial project building
+        x > canvas.width * 0.7 &&
+        x < canvas.width * 0.89 &&
+        y > canvas.height * 0.7 &&
+        y < canvas.height * 1
+      ) {
+        const width = canvas.width * 0.19;
+        const height = canvas.height * 0.23 + scale * zoom;
+        const dx = canvas.width * 0.7;
+        const dy = canvas.height * 0.7 - scale * zoom;
+        canvas.addEventListener("click", () => {
+          router.push(`${pathname}#special-programs`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(spacialProjectBuilding, dx, dy, width, height);
+      } else if (
+        // football ground
+        x > canvas.width * 0.56 &&
+        x < canvas.width * 0.65 &&
+        y > canvas.height * 0.75 &&
+        y < canvas.height * 0.8
+      ) {
+        const width = canvas.width * 0.27 + scale * zoom;
+        const height = canvas.height * 0.28 + scale * zoom;
+        const dx = canvas.width * 0.56 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.6 - scale * zoom * 0.5;
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(footballGround, dx, dy, width, height);
+      } else if (
+        // early childhood center building
+        x > canvas.width * 0 &&
+        x < canvas.width * 0.26 &&
+        y > canvas.height * 0 &&
+        y < canvas.height * 0.53
+      ) {
+        const width = canvas.width * 0.26 + scale * zoom;
+        const height = canvas.height * 0.53 + scale * zoom;
+        const dx = canvas.width * 0 - scale * zoom * 0.5;
+        const dy = canvas.height * 0 - scale * zoom * 0.5;
+
+        canvas.addEventListener("click", () => {
+          // console.log("clicked");
+          router.push(`${pathname}?school-tab=${1}#school-section`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(earlyChildhoodCenterBuilding, dx, dy, width, height);
+      } else if (
+        // blue house
+        x > canvas.width * 0.3 &&
+        x < canvas.width * 0.52 &&
+        y > canvas.height * 0.08 &&
+        y < canvas.height * 0.4
+      ) {
+        const width = canvas.width * 0.22 + scale * zoom;
+        const height = canvas.height * 0.32 + scale * zoom;
+        const dx = canvas.width * 0.3 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.08 - scale * zoom * 0.5;
+
+        canvas.addEventListener("click", () => {
+          router.push(`${pathname}?school-tab=${2}#school-section`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(blueHouse, dx, dy, width, height);
+      } else if (
+        // sun
+        x > canvas.width * 0.44 &&
+        x < canvas.width * 0.54 &&
+        y > canvas.height * 0.03 &&
+        y < canvas.height * 0.2
+      ) {
+        const width = canvas.width * 0.1 + scale * zoom;
+        const height = canvas.height * 0.2 + scale * zoom;
+        const dx = canvas.width * 0.44 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.03 - scale * zoom * 0.5;
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(sun, dx, dy, width, height);
+      } else if (
+        // middle school grades building
+        x > canvas.width * 0.51 &&
+        x < canvas.width * 0.73 &&
+        y > canvas.height * 0.085 &&
+        y < canvas.height * 0.335
+      ) {
+        const width = canvas.width * 0.22 + scale * zoom;
+        const height = canvas.height * 0.25 + scale * zoom;
+        const dx = canvas.width * 0.51 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.085 - scale * zoom * 0.5;
+
+        canvas.addEventListener("click", () => {
+          router.push(`${pathname}?school-tab=${3}#school-section`);
+        });
+
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(middleSchoolGradesBuilding, dx, dy, width, height);
+      } else if (
+        // high school building
+        x > canvas.width * 0.8 &&
+        x < canvas.width &&
+        y > canvas.height * 0 &&
+        y < canvas.height * 0.5
+      ) {
+        const width = canvas.width * 0.23 + scale * zoom;
+        const height = canvas.height * 0.5 + scale * zoom;
+        const dx = canvas.width * 0.77 - scale * zoom * 0.5;
+        const dy = canvas.height * 0 - scale * zoom * 0.5;
+
+        canvas.addEventListener("click", () => {
+          router.push(`${pathname}?school-tab=${4}#school-section`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(highSchoolBuilding, dx, dy, width, height);
+      } else if (
+        // coconut tree
+
+        // width * 0.15,
+        // height * 0.25,
+        // width * 0.66,
+        // height * 0.3
+
+        x > canvas.width * 0.66 &&
+        x < canvas.width * (0.66 + 0.15) &&
+        y > canvas.height * 0.3 &&
+        y < canvas.height * (0.3 + 0.25)
+      ) {
+        const width = canvas.width * 0.15;
+        const height = canvas.height * 0.3 * scale;
+        const dx = canvas.width * 0.66;
+        const dy = canvas.height * 0.3 - 35;
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(coconutTree, dx, dy, width, height);
+      } else if (
+        // cafe building
+        x > canvas.width * 0.74 &&
+        x < canvas.width * 0.99 &&
+        y > canvas.height * 0.45 &&
+        y < canvas.height * 0.85
+      ) {
+        const width = canvas.width * 0.25;
+        const height = canvas.height * 0.4 + scale * zoom;
+        const dx = canvas.width * 0.74;
+        const dy = canvas.height * 0.45 - scale * zoom * 0.8;
+
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(cafeBuilding, dx, dy, width, height);
+      } else if (
+        // reading tree
+        x > canvas.width * 0.43 &&
+        x < canvas.width * 0.63 &&
+        y > canvas.height * 0.4 &&
+        y < canvas.height * 0.75
+      ) {
+        const width = canvas.width * 0.2 + scale * zoom;
+        const height = canvas.height * 0.35 + scale * zoom;
+        const dx = canvas.width * 0.43 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.4 - scale * zoom * 0.5;
+        canvas.addEventListener("click", () => {
+          router.push(`${pathname}?school-tab=${5}#school-section`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawResourcesBuilding(
+          ctx,
+          resourcesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(readingTree, dx, dy, width, height);
+      } else if (
+        // resources building
+        x > canvas.width * 0.25 &&
+        x < canvas.width * 0.5 &&
+        y > canvas.height * 0.38 &&
+        y < canvas.height * 0.62
+      ) {
+        const width = canvas.width * 0.2 + scale * zoom;
+        const height = canvas.height * 0.24 + scale * zoom;
+        const dx = canvas.width * 0.25 - scale * zoom * 0.5;
+        const dy = canvas.height * 0.38 - scale * zoom * 0.5;
+
+        canvas.addEventListener("click", () => {
+          router.push(`/coming-soon`);
+        });
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawImage(ctx, backgroundImage, canvas.width, canvas.height);
+        drawAcademyBridge(ctx, academyBridge, canvas.width, canvas.height);
+        drawFootballGround(ctx, footballGround, canvas.width, canvas.height);
+        drawSpacialProjectBuilding(
+          ctx,
+          spacialProjectBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawEarlyChildhoodCenterBuilding(
+          ctx,
+          earlyChildhoodCenterBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawBlueHouse(ctx, blueHouse, canvas.width, canvas.height);
+        drawSun(ctx, sun, canvas.width, canvas.height);
+        drawMiddleSchoolGradesBuilding(
+          ctx,
+          middleSchoolGradesBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawHighSchoolBuilding(
+          ctx,
+          highSchoolBuilding,
+          canvas.width,
+          canvas.height
+        );
+        drawCoconutTree(ctx, coconutTree, canvas.width, canvas.height);
+        drawCafeBuilding(ctx, cafeBuilding, canvas.width, canvas.height);
+        drawReadingTree(ctx, readingTree, canvas.width, canvas.height);
+        ctx.drawImage(resourcesBuilding, dx, dy, width, height);
+      } else {
+        // clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        updateCanvas();
+      }
+    });
+
+    canvas.addEventListener("mouseleave", () => {
+      updateCanvas();
+    });
+
+    window.addEventListener("resize", updateCanvas);
+  }, []);
+
+  return (
+    <div ref={canvasContainerRef}>
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </div>
+  );
+};
+
+export default Hero;

@@ -1,0 +1,51 @@
+#canvas-dropdown{
+    background-color: rgba(0 0 0 / 50%);
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    min-width: 200px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.canvas-dropdown-option{
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #fff;
+}
+
+.canvas-dropdown-option:hover{
+    background-color: rgba(0 0 0 / 80%);
+}
+
+
+/* Tooltip */
+#canvas-tooltip{
+    position: absolute;
+    background-color: rgba(0 0 0 / 70%);
+    border-radius: 10px;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 16px;
+    z-index: 100;
+    transition: opacity 0.2s;
+    width: 100%;
+    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    -ms-flex-direction: column;
+}
+
+.canvas-tooltip-header{
+    display: flex;
+    align-items: center;
+}
+
+.canvas-tooltip-close-button{
+    align-self: flex-end;
+    margin-left: auto;
+    font-size: 1.5rem;
+    line-height: 1;
+}
